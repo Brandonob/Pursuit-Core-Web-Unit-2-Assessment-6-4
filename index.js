@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gamePage()
     const getData = async () => {
         let res = await axios.get("https://ghibliapi.herokuapp.com/films/")
-        // let title = await axios.get(`https://ghibliapi.herokuapp.com/films/${filmId}/`)
-        // console.log(title)
+       
         let filmTitle = 0
         let films = {}
         for(let i = 0; i < res.data.length; i ++){
@@ -33,8 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
             filmTitle = res.data[i].title
 
             option.innerText = filmTitle
-            // console.log(option.value)
-            // debugger
             
             select.appendChild(option)
         }
@@ -43,11 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
             
             h3.innerText = select.value
             document.querySelector("div").appendChild(h3)
-            // debugger
+            
             p.innerText = res.data[Number(films[select.value])].release_date
             document.querySelector("div").appendChild(p)
             console.log(p.innerText)
-            // debugger
 
             p2.innerText = res.data[films[select.value]].description
             document.querySelector("div").appendChild(p2)
@@ -56,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
             button.innerText = "Submit Review"
             form.appendChild(input)
 
-            form.appendChild(button)
-            document.querySelector("form").addEventListener("submit", () => {
-                ul.innerText = input.value
-                document.querySelector("div").appendChild(ul)
+        })
+        form.appendChild(button)
+        button.addEventListener("submit", (input) => {
+            ul.innerText = input.value
+            document.querySelector("div").appendChild(ul)
 
 
-            })
         })
 
 
