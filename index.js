@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let div = document.createElement("div")
     let h3 = document.createElement("h3")
     let p = document.createElement("p")
+    let p2 = document.createElement("p")
     let form = document.createElement("form")
     let input = document.createElement("input")
     let button = document.createElement("button")
@@ -40,16 +41,16 @@ document.addEventListener("DOMContentLoaded", () => {
         select.addEventListener("change", () => {
             div.innerText = ""
             
-            h3.innerText = filmTitle
+            h3.innerText = select.value
             document.querySelector("div").appendChild(h3)
             // debugger
-            p.innerText = res.data[Number(films["filmTitle"])].release_date
+            p.innerText = res.data[Number(films[select.value])].release_date
             document.querySelector("div").appendChild(p)
             console.log(p.innerText)
-            debugger
+            // debugger
 
-            p.innerText = res.data[films["filmTitle"]].description
-            document.querySelector("div").appendChild(p)
+            p2.innerText = res.data[films[select.value]].description
+            document.querySelector("div").appendChild(p2)
 
             document.querySelector("div").appendChild(form)
             button.innerText = "Submit Review"
